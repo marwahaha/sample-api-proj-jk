@@ -1,4 +1,4 @@
-# TMF Sample API
+# Sample API Project
 Create .NET API endpoints for basic commerce system
 
 ### Description
