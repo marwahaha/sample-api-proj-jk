@@ -1,4 +1,4 @@
-# TMF Backend Skills Test Project
+# TMF Sample API
 Create .NET API endpoints for basic commerce system
 
 ### Description
