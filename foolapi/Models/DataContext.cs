@@ -14,9 +14,10 @@ namespace foolapi.Models
         {
             var builder = new ConfigurationBuilder()
                                     .SetBasePath(Directory.GetCurrentDirectory())
+                                    .AddUserSecrets("d997ecb9-4439-4d27-ac05-404ee3e806b2")
                                     .AddJsonFile("appsettings.json");
             var configuration = builder.Build();
-            optionsBuilder.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]);
+            optionsBuilder.UseSqlServer(configuration["ConnectionStrings:secret-fool-connstring"]);
         }
 
         public DbSet<Product> Product { get; set; }

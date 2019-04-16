@@ -8,7 +8,7 @@ namespace foolapi_tests
     {
 
         [Fact]
-        public void GetValues()
+        public void CallGetValuesReturn2()
         {
             ValuesController controller = new foolapi.Controllers.ValuesController();
             var result = controller.GetValues();
