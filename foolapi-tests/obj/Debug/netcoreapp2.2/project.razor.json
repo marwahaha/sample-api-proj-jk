@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "c:\\Users\\JulieKDang\\code\\sample-api-proj-jk\\foolapi-tests\\foolapi-tests.csproj",
+  "TargetFramework": "netcoreapp2.2",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  }
+}

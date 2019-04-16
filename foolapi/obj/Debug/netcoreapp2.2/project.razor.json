@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "c:\\Users\\JulieKDang\\code\\sample-api-proj-jk\\foolapi\\foolapi.csproj",
+  "TargetFramework": "netcoreapp2.2",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "MVC-2.1",
+    "LanguageVersion": "2.1",
+    "Extensions": [
+      {
+        "ExtensionName": "MVC-2.1"
+      }
+    ]
+  }
+}
