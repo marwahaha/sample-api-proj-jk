@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using foolapi.Models;
 using foolapi.Controllers;
 
-
 namespace foolapi_tests
 {
     public class FoolApiTests
