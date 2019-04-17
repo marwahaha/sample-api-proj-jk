@@ -1,7 +1,17 @@
 # Sample API Project
-Create .NET API endpoints for basic commerce system
+
 
 ### Description
+**Product:** .NET API endpoints for basic commerce system
+
+#### Project Components
+* Creating code
+* Testing code
+* Documenting code
+* Designing Endpoints for Developer Interaction
+
+#### Design considerations
+
 
 ### Dependencies
 - **Foundation Framework:** .Net Core 2.2
