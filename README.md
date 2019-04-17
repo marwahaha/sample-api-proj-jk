@@ -4,7 +4,7 @@ Create .NET API endpoints for basic commerce system
 ### Description
 
 ### Dependencies
-- **Foundation Framework:** .Net Core 2,2
+- **Foundation Framework:** .Net Core 2.2
 - **Entity Framework:** EF Core 2.2
 - **Unit Testing:** xunit 2.4
 - **Integration Testing:** Postman 2.1
@@ -15,6 +15,20 @@ Create .NET API endpoints for basic commerce system
   
 ### Getting Started
 
+1. Open `sample-api-proj-jk` folder in IDE of choice (I use VScode and haven't tested it in Visual Studio)
+2. In terminal of choice, preferably the integrated VSCode terminal, `cd` into `foolapi` subdirectory
+ > Note: this is where the main application code exists and it can run on its own 
+3. Run `dotnet restore`
+4. Run `dotnet build`
+5. In terminal, `cd` into parallel subdirectory `foolapi-tests`
+ > Note: this is where xunit and the few unit tests exist
+5. Run `dotnet restore`
+6. Run `dotnet build` - this demonstrates the code and all of its dependencies have properly loaded
+7. Run `dotnet test` - this demonstrates that the unit tests still function
+8. Open `postman-tests\foolapi-integration-tests.postman_collection.json` by File > Import > Import File
+
 ### Discussion
+
+
 
 ### Remaining TODO
