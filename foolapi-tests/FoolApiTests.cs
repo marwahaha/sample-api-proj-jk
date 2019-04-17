@@ -30,7 +30,7 @@ namespace foolapi_tests
         public async void CallGetAllProductsIsNotNull()
         {
             ProductController controller = new ProductController();
-            var actionResult = await controller.GetAllProducts();
+            var actionResult = await controller.GetProducts();
             Assert.NotNull(actionResult);
 
             var okObjectResult = actionResult.Result as OkObjectResult;
@@ -44,7 +44,7 @@ namespace foolapi_tests
         public async void CallGetAllProductsIsNotEmpty()
         {
             ProductController controller = new ProductController();
-            var actionResult = await controller.GetAllProducts();
+            var actionResult = await controller.GetProducts();
 
             //Assert
             var okObjectResult = actionResult.Result as OkObjectResult;
