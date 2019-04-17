@@ -27,7 +27,7 @@ Description|URI
 All products for one brand|/api/vx.x/brands/{id}/products
 All offers for one product|/api/vx.x/brands/{id}/products/{id}/offers
 
-However, I found this design is rigid for entity management (if/how to handle cascading deletes). Searching and filtering is difficult because it requires storage and understanding of the hierarchy. And it doesn't handle many-to-many relationships and other anomalous relationships that may exist in data that captures real-world operations. This [article](https://softwareengineering.stackexchange.com/questions/274998/nested-rest-urls-and-parent-id-which-is-better-design) gave words to some of the abstract frustrations floating around my mind. 
+However, I found this design is rigid for entity management (if/how to handle cascading deletes). Searching and filtering is difficult because it requires storage and understanding of the hierarchy. And it doesn't handle many-to-many relationships and other anomalous relationships that may exist in data that captures real-world operations. This [article](https://softwareengineering.stackexchange.com/questions/274998/nested-rest-urls-and-parent-id-which-is-better-design) gave words to some of the abstract frustrations floating around my mind. And Tim Berners-Lee said: _The only thing you can use an identifier for is to refer to an object. When you are not dereferencing, you should not look at the contents of the URI string to gain other information._
 
 Instead, for the design I opted for a series of flat endpoints structured like this: 
 
