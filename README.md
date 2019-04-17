@@ -49,6 +49,8 @@ One Customer|/api/vx.x/customers/{id}
 Foreign keys (parents) can be retried like this:
 http://localhost:5002/api/offers?product=100
 
+**For more details on the URI design take a look at the postman tests**
+
 Each object and collection must have a noun-based endpoint that doesn't depend on prior knowledge of hierarchy. The idea is to keep it flat and uniquely identify each data element, perhaps with a GUID. This is not designed. Also not designed is the handling of relationships between the data. Some ideas: tag the parents and children of each element, e.g., in a HATEOUS format, or by using embedded json, sort of like GraphQL. Tags can also assist with searching and navigating. 
 
 ### Dependencies
