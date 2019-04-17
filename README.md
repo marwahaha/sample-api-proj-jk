@@ -22,10 +22,10 @@ Create .NET API endpoints for basic commerce system
 4. Run `dotnet build`
 5. In terminal, `cd` into parallel subdirectory `foolapi-tests`
  > Note: this is where xunit and the few unit tests exist
-5. Run `dotnet restore`
-6. Run `dotnet build` - this demonstrates the code and all of its dependencies have properly loaded
-7. Run `dotnet test` - this demonstrates that the unit tests still function
-8. Open `postman-tests\foolapi-integration-tests.postman_collection.json` by File > Import > Import File
+6. Run `dotnet restore`
+7. Run `dotnet build` - this demonstrates the code and all of its dependencies have properly loaded
+8. Run `dotnet test` - this demonstrates that the unit tests still function
+9. Open `postman-tests\foolapi-integration-tests.postman_collection.json` by File > Import > Import File
 
 ### Discussion
 
