@@ -33,11 +33,11 @@ namespace foolapi.Controllers
 
         // TODO: create a GetBrandById function to work with this one
         [Produces("application/json")]
-        [HttpGet("{code}")]
-        public async Task<ActionResult<Brand>> GetBrandByCode(string code)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Brand>> GetBrandById(Int16 id)
         {
 
-            Brand Brand = await FindByBrand(code);
+            Brand Brand = await db.Brand.FindAsync(id);
 
             if (Brand == null)
             {
@@ -96,7 +96,7 @@ namespace foolapi.Controllers
         [Consumes("application/json")]
         [Produces("application/json")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> Edit(string code, [FromBody] Brand Brand)
+        public async Task<IActionResult> Edit(Int16 id, [FromBody] Brand Brand)
         {
 
             //TODO: check if ID exists without using an instance of Brand
@@ -107,9 +107,9 @@ namespace foolapi.Controllers
                 return NotFound($"A Brand with id={id} is not found");
             }*/
 
-            if (code != Brand.BrandCode)
+            if (id != Brand.BrandId)
             {
-                return BadRequest($"The Brand Id of {Brand.BrandCode} doesn't match the endpoint of {code}");
+                return BadRequest($"The Brand Id of {Brand.BrandId} doesn't match the endpoint of {id}");
             }
 
             if (ModelState.IsValid)
@@ -130,7 +130,7 @@ namespace foolapi.Controllers
         // TODO: 1/6 Integration tests fail because DX for this one needs work
         // TODO: soft delete, cascading deletes
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Remove(int id)
+        public async Task<IActionResult> Remove(Int16 id)
         {
             var existingItem = await db.Brand.FindAsync(id);
 
