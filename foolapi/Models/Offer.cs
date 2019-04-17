@@ -9,7 +9,7 @@ namespace foolapi.Models
     {
         public int OfferId { get; set; }
         public int ProductId { get; set; }
-        public float Price { get; set; }
+        public Decimal Price { get; set; }
         public DateTime DateCreated  { get; set; }
         public DateTime DateModified  { get; set; }
         public int NumberOfTerms { get; set; }

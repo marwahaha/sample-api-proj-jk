@@ -48,25 +48,26 @@ namespace foolapi.Controllers
             }
         }
 
-        // Brands is Parent table of Offers
+        // Products is Parent table of Offers
         // TODO: add filter on multiple fields
         [Produces("application/json")]
         [HttpGet]
-        public async Task<ActionResult<List<Offer>>> GetOffers([FromQuery]string brand = "", [FromQuery]string term = "")
+        public async Task<ActionResult<List<Offer>>> GetOffers([FromQuery]int product = 0, [FromQuery]string numterms = "")
         {
             List<Offer> items = new List<Offer>();
             String notFoundMessage = "";
 
             //does not currently enable searching on multiple fields
-            if (brand != "")
+            //product is the alias for productid
+            if (product != 0)
             {
-                items = await FilterByBrand(brand);
-                notFoundMessage = $"No Offers for brand={brand} found";
+                items = await FilterByProduct(product);
+                notFoundMessage = $"No Offers for product={product} found";
             }
-            else if (term != "")
+            else if (numterms != "")
             {
-                items = await FilterByTerm(term);
-                notFoundMessage = $"No Offers for term={term} found";
+                items = await FilterByTerm(numterms);
+                notFoundMessage = $"No Offers for number of terms={numterms} found";
             }
             else
             {
