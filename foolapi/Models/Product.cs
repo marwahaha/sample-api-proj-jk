@@ -14,6 +14,5 @@ namespace foolapi.Models
         public bool IsActive { get; set; }
         public string Brand { get; set; }
         public string Term { get; set; }
-        public Int16 BrandId { get; set; }
     }
 } 

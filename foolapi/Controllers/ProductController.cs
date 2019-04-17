@@ -58,12 +58,12 @@ namespace foolapi.Controllers
             String notFoundMessage = "";
 
             //does not currently enable searching on multiple fields
-            if (brand != null)
+            if (brand != "")
             {
                 items = await FilterByBrand(brand);
                 notFoundMessage = $"No products for brand={brand} found";
             }
-            else if (term != null)
+            else if (term != "")
             {
                 items = await FilterByTerm(term);
                 notFoundMessage = $"No products for term={term} found";
@@ -92,7 +92,6 @@ namespace foolapi.Controllers
             .ToListAsync();
         }
 
-
         public async Task<List<Product>> FilterByTerm(string term)
         {
             return await db.Product
@@ -100,7 +99,6 @@ namespace foolapi.Controllers
             .Where(e => e.Term.StartsWith(term))
             .ToListAsync();
         }
-
 
         [Consumes("application/json")]
         [Produces("application/json")]
