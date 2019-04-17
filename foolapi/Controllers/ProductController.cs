@@ -35,6 +35,7 @@ namespace foolapi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProductById(int id)
         {
+
             Product product = await db.Product.FindAsync(id);
 
             if (product == null)
@@ -47,20 +48,59 @@ namespace foolapi.Controllers
             }
         }
 
+        // Brands is Parent table of Products
+        // TODO: add filter on multiple fields
         [Produces("application/json")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
+        public async Task<ActionResult<List<Product>>> GetProducts([FromQuery]string brand = "", [FromQuery]string term = "")
         {
-            var items = await db.Product.ToListAsync();
-            if (items == null)
+            List<Product> items = new List<Product>();
+            String notFoundMessage = "";
+
+            //does not currently enable searching on multiple fields
+            if (brand != null)
             {
-                return NotFound();
+                items = await FilterByBrand(brand);
+                notFoundMessage = $"No products for brand={brand} found";
+            }
+            else if (term != null)
+            {
+                items = await FilterByTerm(term);
+                notFoundMessage = $"No products for term={term} found";
+            }
+            else
+            {
+                items = await db.Product.ToListAsync();
+                notFoundMessage = "No products found";
+            }
+
+            if ((items == null) || (items.Count < 1))
+            {
+                return NotFound(notFoundMessage);
             }
             else
             {
                 return Ok(items);
             }
+
         }
+
+        public async Task<List<Product>> FilterByBrand(string brand)
+        {
+            return await db.Product
+            .Where(e => e.Brand.Equals(brand))
+            .ToListAsync();
+        }
+
+
+        public async Task<List<Product>> FilterByTerm(string term)
+        {
+            return await db.Product
+            /* starts with enables using m,month,monthly and a,annual,annually */
+            .Where(e => e.Term.StartsWith(term))
+            .ToListAsync();
+        }
+
 
         [Consumes("application/json")]
         [Produces("application/json")]
@@ -74,14 +114,24 @@ namespace foolapi.Controllers
         }
 
 
+        // TODO: DX improvements - productid should not be provided
         [Consumes("application/json")]
         [Produces("application/json")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Edit(int id, [FromBody] Product product)
         {
+
+            //TODO: check if ID exists without using an instance of product
+            // That generates the EF error for tracking objs of same id
+
+            /* Boolean isValidId = false; //await IdExists(id);
+            if(!isValidId) {
+                return NotFound($"A product with id={id} is not found");
+            }*/
+
             if (id != product.ProductId)
             {
-                return BadRequest("If provided, ProductId must match endpoint");
+                return BadRequest($"The Product Id of {product.ProductId} doesn't match the endpoint of {id}");
             }
 
             if (ModelState.IsValid)
@@ -99,7 +149,7 @@ namespace foolapi.Controllers
             return Ok(product);
         }
 
-        // TODO: Integration tests fail because DX for this one needs work
+        // TODO: 1/6 Integration tests fail because DX for this one needs work
         // TODO: soft delete, cascading deletes
         [HttpDelete("{id}")]
         public async Task<IActionResult> Remove(int id)
@@ -113,7 +163,7 @@ namespace foolapi.Controllers
 
             db.Product.Remove(existingItem);
             db.SaveChanges();
-            return Ok(null);
+            return Ok(new Product());
         }
 
     }

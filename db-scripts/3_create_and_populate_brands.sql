@@ -26,4 +26,8 @@ GO
 SET ANSI_PADDING OFF
 GO
 
-
+INSERT INTO [dbo].[Brand] ([BrandCode], [Name], [Description]) VALUES (N'AU',  N'Australia', N'estum. gravum si rarendum glavans')
+INSERT INTO [dbo].[Brand] ([BrandCode], [Name], [Description]) VALUES (N'DE',  N'Germany', N'Sed plurissimum quo Pro quo, dolorum')
+INSERT INTO [dbo].[Brand] ([BrandCode], [Name], [Description]) VALUES (N'GB',  N'Great Britain', 'quoque quis novum eggredior.')
+INSERT INTO [dbo].[Brand] ([BrandCode], [Name], [Description]) VALUES (N'US',  N'United States', 'nomen fecundio, bono trepicandor imaginator linguens')
+GO
