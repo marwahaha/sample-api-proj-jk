@@ -26,3 +26,4 @@ C:\Users\JulieKDang\code\sample-api-proj-jk\foolapi\obj\Debug\netcoreapp2.2\fool
 C:\Users\JulieKDang\code\sample-api-proj-jk\foolapi\obj\Debug\netcoreapp2.2\foolapi.RazorTargetAssemblyInfo.cache
 C:\Users\JulieKDang\code\sample-api-proj-jk\foolapi\obj\Debug\netcoreapp2.2\foolapi.dll
 C:\Users\JulieKDang\code\sample-api-proj-jk\foolapi\obj\Debug\netcoreapp2.2\foolapi.pdb
+C:\Users\JulieKDang\code\sample-api-proj-jk\foolapi\bin\Debug\netcoreapp2.2\appsettings.json

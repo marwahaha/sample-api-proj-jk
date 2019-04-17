@@ -32,3 +32,4 @@ C:\Users\JulieKDang\code\sample-api-proj-jk\foolapi-tests\obj\Debug\netcoreapp2.
 C:\Users\JulieKDang\code\sample-api-proj-jk\foolapi-tests\obj\Debug\netcoreapp2.2\foolapi-tests.csproj.CopyComplete
 C:\Users\JulieKDang\code\sample-api-proj-jk\foolapi-tests\obj\Debug\netcoreapp2.2\foolapi-tests.dll
 C:\Users\JulieKDang\code\sample-api-proj-jk\foolapi-tests\obj\Debug\netcoreapp2.2\foolapi-tests.pdb
+C:\Users\JulieKDang\code\sample-api-proj-jk\foolapi-tests\bin\Debug\netcoreapp2.2\appsettings.json

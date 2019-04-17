@@ -18,6 +18,9 @@ namespace foolapi.Models
                                     .AddJsonFile("appsettings.json");
             var configuration = builder.Build();
             optionsBuilder.UseSqlServer(configuration["ConnectionStrings:secret-fool-connstring"]);
+
+            //UNCOMMENT THIS TO USE THE CONNECTIONSTRING IN THE APPSETTINGS.JSON FILE
+            //optionsBuilder.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]);
         }
 
         public DbSet<Product> Product { get; set; }
