@@ -6,137 +6,2174 @@
 	},
 	"item": [
 		{
-			"name": "get-nodata-values",
+			"name": "api/products tests",
+			"item": [
+				{
+					"name": "nodata-products-nondata",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "986ccda4-e49b-4def-b6a7-134c9cccffc5",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/products/nondata",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"products",
+								"nondata"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve-product-by-id-exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "057f3951-889b-42bb-bc81-3ad236f38213",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/products/100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"products",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve-product-by-id-notfound",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "057f3951-889b-42bb-bc81-3ad236f38213",
+								"exec": [
+									"\r",
+									"// TESTS FOR GRACEFUL FAILURE DX\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error\", function () {\r",
+									"     pm.response.to.be.error;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/products/105",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"products",
+								"105"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve-products-all",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6898b616-91b6-4e2e-a9b1-cee2b39c3ec9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "ae4fdbdb-6065-41f2-a436-6ac8e0bff734",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve-product-by-term",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "057f3951-889b-42bb-bc81-3ad236f38213",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/products?brand=AU",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "AU"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve-product-by-brand-code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "057f3951-889b-42bb-bc81-3ad236f38213",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/products?brand=AU",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "AU"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-product-next-goodobj",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e3966afa-e454-4f91-85f9-f812ee0180ad",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"UPDATEDNAME\",\n    \"dateCreated\": \"2003-02-08T09:01:46.02\",\n    \"dateModified\": \"2003-03-26T03:55:04.33\",\n    \"isActive\": true,\n    \"brand\": \"US\",\n    \"term\": \"monthly\",\n    \"brandId\": 4\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/products/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"products",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-product-next-badobj",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e3966afa-e454-4f91-85f9-f812ee0180ad",
+								"exec": [
+									"\r",
+									"// TESTS FOR GRACEFUL FAILURE DX\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error\", function () {\r",
+									"     pm.response.to.be.error;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ProductId\": 100,\n    \"name\": \"juliekwashere\",\n    \"dateCreated\": \"2003-02-08T09:01:46.02\",\n    \"dateModified\": \"2003-03-26T03:55:04.33\",\n    \"isActive\": true,\n    \"brand\": \"US\",\n    \"term\": \"monthly\",\n    \"brandId\": 4\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/products/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"products",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-product-badId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b6c403d1-3d6a-476b-8fda-922e9de4d652",
+								"exec": [
+									"\r",
+									"// TESTS FOR GRACEFUL FAILURE DX\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error\", function () {\r",
+									"     pm.response.to.be.error;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": 200,\n    \"name\": \"TESTVALUEUPDATED1\",\n    \"dateCreated\": \"2019-04-16T13:02:49\",\n    \"dateModified\": \"2019-03-16T13:02:49\",\n    \"isActive\": true,\n    \"brand\": \"US\",\n    \"term\": \"monthly\",\n    \"brandId\": 4\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/products/200",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"products",
+								"200"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-product-goodId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b6c403d1-3d6a-476b-8fda-922e9de4d652",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": 100,\n    \"name\": \"TESTVALUEUPDATED1\",\n    \"dateCreated\": \"2019-04-16T13:02:49\",\n    \"dateModified\": \"2019-03-16T13:02:49\",\n    \"isActive\": true,\n    \"brand\": \"US\",\n    \"term\": \"monthly\",\n    \"brandId\": 4\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/products/100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"products",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-product-by-id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "820a1cb0-20d4-4a99-8ae0-5b2eed5e66bd",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/products/105",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"products",
+								"105"
+							]
+						}
+					},
+					"response": []
+				}
+			],
 			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3e1616c3-a183-42dc-8e70-89cf4ad1ffc2",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
 				{
 					"listen": "test",
 					"script": {
-						"id": "986ccda4-e49b-4def-b6a7-134c9cccffc5",
+						"id": "0848d7a8-9c16-4130-8ea1-11a6552612ef",
+						"type": "text/javascript",
 						"exec": [
-							"\r",
-							"//SPECIFIC TESTS\r",
-							"pm.test(\"Content-Type is present\", function () {\r",
-							"    pm.response.to.include.header(\"Content-Type\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Content-Type is application/json\", function () {\r",
-							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response is valid\", function () {\r",
-							"     pm.response.to.be.withBody;\r",
-							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
-							"});\r",
-							"\r",
-							"\r",
-							"// STANDARD TESTS FOR SUCCESS\r",
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response is error-free\", function () {\r",
-							"     pm.response.to.not.be.error;\r",
-							"     pm.response.to.not.have.jsonBody(\"error\"); \r",
-							"});\r",
-							"\r",
-							"\r",
-							"\r",
 							""
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:5002/api/values",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5002",
-					"path": [
-						"api",
-						"values"
-					]
-				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "get-nodata-value-by-id",
+			"name": "api/brands tests",
+			"item": [
+				{
+					"name": "nodata-brands-nondata",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "986ccda4-e49b-4def-b6a7-134c9cccffc5",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/brands/nondata",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"brands",
+								"nondata"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve-brand-by-id-exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "057f3951-889b-42bb-bc81-3ad236f38213",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/brands/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"brands",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve-brands-all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "057f3951-889b-42bb-bc81-3ad236f38213",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/brands",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve-brand-by-id-notfound",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "057f3951-889b-42bb-bc81-3ad236f38213",
+								"exec": [
+									"\r",
+									"// TESTS FOR GRACEFUL FAILURE DX\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error\", function () {\r",
+									"     pm.response.to.be.error;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/brands/100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"brands",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-brand-next-goodobj",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e3966afa-e454-4f91-85f9-f812ee0180ad",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Name\": \"Canada\",\n    \"BrandCode\": \"CA\",\n    \"Description\": \"dummy description\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/brands/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"brands",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-brand-next-badobj",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e3966afa-e454-4f91-85f9-f812ee0180ad",
+								"exec": [
+									"\r",
+									"// TESTS FOR GRACEFUL FAILURE DX\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error\", function () {\r",
+									"     pm.response.to.be.error;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"BrandId\": 100,\n    \"BrandCode\": \"JP\",\n    \"Name\": \"Japan\",\n    \"Description\": \"dummy value\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/brands/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"brands",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-brand-badId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b6c403d1-3d6a-476b-8fda-922e9de4d652",
+								"exec": [
+									"\r",
+									"// TESTS FOR GRACEFUL FAILURE DX\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error\", function () {\r",
+									"     pm.response.to.be.error;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"BrandId\": 200,\n    \"BrandCode\": \"JP\",\n    \"Name\": \"Japan\",\n    \"Description\": \"dummy value\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/brands/200",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"brands",
+								"200"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-brand-goodId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b6c403d1-3d6a-476b-8fda-922e9de4d652",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"brandId\": 1,\n    \"brandCode\": \"AU\",\n    \"name\": \"Australia\",\n    \"description\": \"updated dummy description\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/brands/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"brands",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-brand-by-id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "820a1cb0-20d4-4a99-8ae0-5b2eed5e66bd",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/brands/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"brands",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			],
 			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3e1616c3-a183-42dc-8e70-89cf4ad1ffc2",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
 				{
 					"listen": "test",
 					"script": {
-						"id": "986ccda4-e49b-4def-b6a7-134c9cccffc5",
+						"id": "0848d7a8-9c16-4130-8ea1-11a6552612ef",
+						"type": "text/javascript",
 						"exec": [
-							"\r",
-							"//SPECIFIC TESTS\r",
-							"pm.test(\"Content-Type is present\", function () {\r",
-							"    pm.response.to.include.header(\"Content-Type\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Content-Type is application/json\", function () {\r",
-							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/plain\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response is valid\", function () {\r",
-							"     pm.response.to.be.withBody;\r",
-							"     pm.expect(pm.response.text()).to.include(\"value\");\r",
-							"});\r",
-							"\r",
-							"// STANDARD TESTS FOR SUCCESS\r",
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response is error-free\", function () {\r",
-							"     pm.response.to.not.be.error;\r",
-							"     pm.response.to.not.have.jsonBody(\"error\"); \r",
-							"});\r",
 							""
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:5002/api/values/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
+			]
+		},
+		{
+			"name": "api/offers tests",
+			"item": [
+				{
+					"name": "nodata-offers-nondata",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "986ccda4-e49b-4def-b6a7-134c9cccffc5",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
 					],
-					"port": "5002",
-					"path": [
-						"api",
-						"values",
-						"1"
-					]
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/brands/nondata",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"brands",
+								"nondata"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve-offer-by-id-exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "057f3951-889b-42bb-bc81-3ad236f38213",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/offers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"offers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve-offers-all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "057f3951-889b-42bb-bc81-3ad236f38213",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/offers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"offers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve-offers-by-productid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "057f3951-889b-42bb-bc81-3ad236f38213",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/offers?product=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"offers"
+							],
+							"query": [
+								{
+									"key": "product",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve-offer-by-id-notfound",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "057f3951-889b-42bb-bc81-3ad236f38213",
+								"exec": [
+									"\r",
+									"// TESTS FOR GRACEFUL FAILURE DX\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error\", function () {\r",
+									"     pm.response.to.be.error;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/offers/200",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"offers",
+								"200"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-offer-next-goodobj",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e3966afa-e454-4f91-85f9-f812ee0180ad",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": 73,\n    \"price\": 785.98,\n    \"dateCreated\": \"2014-11-12T01:16:12.23\",\n    \"dateModified\": \"2014-11-20T07:06:23.02\",\n    \"numberOfTerms\": 5,\n    \"description\": \"dummy description for added offer\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/offers/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"offers",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-offers-next-badobj",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e3966afa-e454-4f91-85f9-f812ee0180ad",
+								"exec": [
+									"\r",
+									"// TESTS FOR GRACEFUL FAILURE DX\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error\", function () {\r",
+									"     pm.response.to.be.error;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": 73,\n    \"price\": 785.98,\n    \"dateCreated\": \"2014-11-12T01:16:12.23\",\n    \"dateModified\": \"2014-11-20T07:06:23.02\",\n    \"numberOfTerms\": 5,\n    \"description\": \"dummy description for added offer\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/offers/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"offers",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-offer-badId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b6c403d1-3d6a-476b-8fda-922e9de4d652",
+								"exec": [
+									"\r",
+									"// TESTS FOR GRACEFUL FAILURE DX\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error\", function () {\r",
+									"     pm.response.to.be.error;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": 73,\n    \"price\": 785.98,\n    \"dateCreated\": \"2014-11-12T01:16:12.23\",\n    \"dateModified\": \"2014-11-20T07:06:23.02\",\n    \"numberOfTerms\": 5,\n    \"description\": \"dummy description for UPDATED offer\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/offers/200",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"offers",
+								"200"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-offer-goodId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b6c403d1-3d6a-476b-8fda-922e9de4d652",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"offerId\":\"100\",\n    \"productId\": 73,\n    \"price\": 785.98,\n    \"dateCreated\": \"2014-11-12T01:16:12.23\",\n    \"dateModified\": \"2014-11-20T07:06:23.02\",\n    \"numberOfTerms\": 5,\n    \"description\": \"dummy description for UPDATED offer\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/offers/100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"offers",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-offer-by-id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "820a1cb0-20d4-4a99-8ae0-5b2eed5e66bd",
+								"exec": [
+									"\r",
+									"//STANDARD TESTS FOR JSON VALIDITY\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.include.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// STANDARD TESTS FOR SUCCESS\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is error-free\", function () {\r",
+									"     pm.response.to.not.be.error;\r",
+									"     pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/offers/101",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"offers",
+								"101"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3e1616c3-a183-42dc-8e70-89cf4ad1ffc2",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "0848d7a8-9c16-4130-8ea1-11a6552612ef",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
 		}
 	]
 }
