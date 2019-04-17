@@ -21,6 +21,6 @@ namespace foolapi.Models
         }
 
         public DbSet<Product> Product { get; set; }
-
+        public DbSet<Brand> Brand { get; set; }
     }
 }
