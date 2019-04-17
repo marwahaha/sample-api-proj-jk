@@ -31,12 +31,13 @@ namespace foolapi.Controllers
             return values;
         }
 
+        // TODO: create a GetBrandById function to work with this one
         [Produces("application/json")]
-        [HttpGet("{id}")]
+        [HttpGet("{code}")]
         public async Task<ActionResult<Brand>> GetBrandByCode(string code)
         {
 
-            Brand Brand = await db.Brand.FindAsync(code);
+            Brand Brand = await FindByBrand(code);
 
             if (Brand == null)
             {
@@ -46,6 +47,13 @@ namespace foolapi.Controllers
             {
                 return Ok(Brand);
             }
+        }
+
+        public async Task<Brand> FindByBrand(string brand)
+        {
+            return await db.Brand
+            .Where(e => e.BrandCode.Equals(brand))
+            .SingleOrDefaultAsync();
         }
 
         // No parent table
