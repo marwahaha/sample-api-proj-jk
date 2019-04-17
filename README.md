@@ -105,3 +105,4 @@ Each object and collection must have a noun-based endpoint that doesn't depend o
 * Add sorting and paging functions
 * Add tests to work out graceful failures (correct http response code, message in the body)
 * Add Version number
+* Use repository approach as a way to better decouple the data from the controller. 
