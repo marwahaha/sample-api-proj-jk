@@ -47,7 +47,7 @@ One Customer|/api/vx.x/customers/{id}
 Foreign keys (parents) can be retried like this:
 http://localhost:5002/api/offers?product=100
 
-Each object and collection must have a noun-based endpoint that doesn't depend on prior knowledge of hierarchy. The idea is to keep it flat and uniquely identify each data element, perhaps with a GUID. This is not designed. Also not designed is the handling of relationships between the data. Some ideas: tag the parents and children of each element, e.g., in a HATEOUS format, or by using embedded json, sort of like GraphQL. 
+Each object and collection must have a noun-based endpoint that doesn't depend on prior knowledge of hierarchy. The idea is to keep it flat and uniquely identify each data element, perhaps with a GUID. This is not designed. Also not designed is the handling of relationships between the data. Some ideas: tag the parents and children of each element, e.g., in a HATEOUS format, or by using embedded json, sort of like GraphQL. Tags can also assist with searching and navigating. 
 
 ### Dependencies
 - **Foundation Framework:** .Net Core 2.2
@@ -92,4 +92,13 @@ Each object and collection must have a noun-based endpoint that doesn't depend o
 * Would be interesting to see how this performs at scale, compared to nodejs
 
 ### Remaining TODO
-* 
+* Add Swagger
+* Add meaningful unit tests with mocking, where relevant
+* Add Models and Controllers for Orders and Customers
+* Add Security Best Practices as outlined here: https://github.com/juliekdang/sample-api-proj-jk/issues/10
+* Add GET requests that assist with traversing the object model
+* Add a search engine - fuzzy searching adds a layer of DX and UX because it enables stemming, tokenizing, synonyms... also it's super fast because it's essentiall a searchable cache
+* Add error trapping and validation procedures
+* Add sorting and paging functions
+* Add tests to work out graceful failures (correct http response code, message in the body)
+* Add Version number
