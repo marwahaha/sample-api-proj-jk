@@ -1,5 +1,7 @@
 # Sample API Project
 
+[Description](#description) | [Dependencies](#dependencies) | [Getting Started](#getting-started) | [Discussion](#discussion) | [Remaining TODO](#remaining-todo)
+
 
 ### Description
 
@@ -61,7 +63,6 @@ Each object and collection must have a noun-based endpoint that doesn't depend o
   
 ### Getting Started
 
-
 1. Open `sample-api-proj-jk` folder in IDE of choice (I use VSCode and haven't tested it in Visual Studio)
 2. Run `db-scripts\3_create_and_populate_brands.sql` in either VSCode using MSSQL or in SQL Management Studio scripting window
  > This creates and populates the Brand Table. 
@@ -88,7 +89,7 @@ Each object and collection must have a noun-based endpoint that doesn't depend o
 * Went down a rabbit hole, focusing on performance, and didn't build as much as I wnated to 
 
 (good things)
-* Recovered my microsoft experience from years past and learned some new things (been focusing on nodejs-express stack)
+* Returned to my microsoft experience and learned some new things (been focusing on nodejs-express stack)
 * Would be interesting to see how this performs at scale, compared to nodejs
 
 ### Remaining TODO
