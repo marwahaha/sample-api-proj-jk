@@ -96,7 +96,6 @@ namespace foolapi.Controllers
         public async Task<List<Offer>> FilterByTerm(string numberOferms)
         {
             return await db.Offer
-            /* starts with enables using m,month,monthly and a,annual,annually */
             .Where(e => e.NumberOfTerms.Equals(numberOferms))
             .ToListAsync();
         }

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JulieKDang\\code\\sample-api-proj-jk\\foolapi\\foolapi.csproj": {}
+    "C:\\code\\me\\sample-api-proj-jk\\foolapi\\foolapi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JulieKDang\\code\\sample-api-proj-jk\\foolapi\\foolapi.csproj": {
+    "C:\\code\\me\\sample-api-proj-jk\\foolapi\\foolapi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JulieKDang\\code\\sample-api-proj-jk\\foolapi\\foolapi.csproj",
+        "projectUniqueName": "C:\\code\\me\\sample-api-proj-jk\\foolapi\\foolapi.csproj",
         "projectName": "foolapi",
-        "projectPath": "C:\\Users\\JulieKDang\\code\\sample-api-proj-jk\\foolapi\\foolapi.csproj",
-        "packagesPath": "C:\\Users\\JulieKDang\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JulieKDang\\code\\sample-api-proj-jk\\foolapi\\obj\\",
+        "projectPath": "C:\\code\\me\\sample-api-proj-jk\\foolapi\\foolapi.csproj",
+        "packagesPath": "C:\\Users\\julie\\.nuget\\packages\\",
+        "outputPath": "C:\\code\\me\\sample-api-proj-jk\\foolapi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\JulieKDang\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\julie\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
