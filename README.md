@@ -88,7 +88,7 @@ Each object and collection must have a noun-based endpoint that doesn't depend o
 (not so good things)
 * Did not progress in data mocking, and the unit tests, and documentation via swagger. while the unit tests demonstrate the mechanics, they aren't at all meaningful.
 * I did focus on the integration tests using postman as a way to understand the Developer Experience of inputs and outputs. There's still a lot work to do, but most of the integration tests work.
-* Went down a rabbit hole, focusing on performance, and didn't build as much as I wnated to 
+* Went down a rabbit hole, focusing on performance, and didn't build as much as I wanted to 
 
 (good things)
 * Returned to my microsoft experience and learned some new things (been focusing on nodejs-express stack)
